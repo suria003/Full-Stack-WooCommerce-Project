@@ -1,10 +1,11 @@
 const express = require("express");
 
-const { chkSession } = require("../Controllers/Session");
+const { chkSession, sessionLogout } = require("../Controllers/SessionController");
 
 const sessionRouter = express.Router();
 
 //// /SESSOIN/CHK
-sessionRouter.route("/chk", chkSession);
+sessionRouter.post("/chk", chkSession);
+sessionRouter.post("/logout", sessionLogout);
 
 module.exports = { sessionRouter };

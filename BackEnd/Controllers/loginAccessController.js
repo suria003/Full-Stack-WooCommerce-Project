@@ -1,6 +1,6 @@
 const { checkUsername, checkUserPass } = require("../utils/AuthendicationModule.js");
 const { sessionToken } = require("../utils/Tokens.js");
-const { entrySession } = require("./Session.js");
+const { entrySession } = require("./SessionController.js");
 
 async function loginAccessController(req, res) {
     const { username, password } = req.body;
