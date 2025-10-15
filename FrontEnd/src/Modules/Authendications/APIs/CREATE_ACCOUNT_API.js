@@ -1,8 +1,8 @@
 export const CREATE_ACCOUNT_API = async (account_datas) => {
     let output = {};
-    
+
     try {
-        const TARGET_API = "";
+        const TARGET_API = "http://localhost:3000/api/v0.1/authendication/register";
         const response = await fetch(TARGET_API, {
             method: "POST",
             headers: {
@@ -20,11 +20,13 @@ export const CREATE_ACCOUNT_API = async (account_datas) => {
                     "status": true,
                     "message": result.message,
                 }
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 500); //5 MS
                 break;
 
             case 400:
-            case 401:
-            case 403:
+            case 424:
             case 409:
             case 500:
                 output = {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CREATE_ACCOUNT_JSON } from "../JSON/Authendication";
+import { CREATE_ACCOUNT_JSON } from "../JSON/AUTHENDICATION-V0.1";
 import { CREATE_ACCOUNT_API } from "./APIs/CREATE_ACCOUNT_API";
 
 export default function CreateAccount() {

@@ -2,7 +2,8 @@ export const LOGIN_API = async (account_datas) => {
     let output = {};
 
     try {
-        const TARGET_API = "";
+        const TARGET_API = "http://localhost:3000/api/v0.1/authendication/login";
+        
         const response = await fetch(TARGET_API, {
             method: "POST",
             headers: {
@@ -13,15 +14,27 @@ export const LOGIN_API = async (account_datas) => {
 
         const result = await response.json();
 
+        console.log('result', result);
+
         switch (response.status) {
             case 200:
+            case 201:
                 output = {
                     "status": true,
                     "message": result.message,
                 }
+
+                sessionStorage.setItem('authToken', result.sessiontkn);
+
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 500) //5 MS
+
                 break;
 
+            case 400:
             case 401:
+            case 409:
             case 404:
             case 500:
                 output = {
