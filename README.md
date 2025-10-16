@@ -5,6 +5,11 @@ This project is a **Woo-Commerce integrated full-stack application**. It allows 
 
 ---
 
+### Ingestion Logic
+The ingestion logic uses basic authentication to validate users. Each authenticated user receives a `userToken`, which is required for product ingestion. This ensures that only authorized users can perform data ingestion operations and maintain data security.
+
+---
+
 ## Authentication
 
 The application supports user authentication with the following endpoints:
