@@ -1,0 +1,30 @@
+SERVER : https://woo-commerce-backend.vercel.app/
+
+AUTHENDICATION API's:
+
+REGISTER = https://woo-commerce-backend.vercel.app/api/v0.1/authendication/register/
+LOGIN = https://woo-commerce-backend.vercel.app/api/v0.1/authendication/login/
+
+LOGOUT = https://woo-commerce-backend.vercel.app/api/v0.1/session/chk/
+
+SESSION = https://woo-commerce-backend.vercel.app/api/v0.1/session/logout/
+
+MODULE API's:
+
+PRODUCT's = https://woo-commerce-backend.vercel.app/api/v0.1/products
+
+PRODUCT's INGETS = https://woo-commerce-backend.vercel.app/api/v0.1/ingests/product/
+
+PRODUCT's SEGMENT = https://woo-commerce-backend.vercel.app/api/v0.1/segments/evaluate/
+
+
+CLIENT : https://woo-commerce-project.web.app
+
+AUTHENDICATION ROUTER's:
+
+REGISTER = https://woo-commerce-project.web.app/register
+LOGIN = https://woo-commerce-project.web.app/login
+
+MODULE ROUTER's:
+
+DASHBOARD = https://woo-commerce-project.web.app/ - { CONTROLL THE PRODUCT's CARD, INGEST PART && SEGMENT EVALUATE }.
