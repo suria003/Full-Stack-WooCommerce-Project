@@ -9,6 +9,7 @@ const connections = require("./config/db");
 const { authenRouter } = require("./routes/authRouter");
 const { sessionRouter } = require("./routes/sessionRouter");
 const { ingestsProduct } = require("./routes/ProductIngests");
+const { segmentsRouter } = require("./routes/SegmentsRouter");
 
 //---- APPLICATION'S ----
 const app = express();
@@ -22,14 +23,10 @@ app.use(express.json());
 app.use("/api/v0.1/authendication", authenRouter);
 app.use("/session", sessionRouter);
 app.use("/ingests", ingestsProduct);
+app.use("/segments", segmentsRouter);
 
 app.get('/', async (req, res) => {
-    try {
-        const [rows] = await connections.execute('SELECT * FROM products');
-        res.json(rows);
-    } catch (error) {
-        res.status(500).json({ message: 'Database error', error: error.message });
-    }
+    res.send("Hello, welcome to Woo Commerce.")
 });
 
 // PRODUCT DATA'S

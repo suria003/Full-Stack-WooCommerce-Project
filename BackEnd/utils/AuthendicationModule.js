@@ -34,15 +34,6 @@ async function checkUserPass(username, password) {
     }
 };
 
-// async function finduserTkn(username){
-//     try{
-//         const [tkn] = await connections.execute('SELECT tkn FROM users WHERE username = ?', [username]);
-//         if (tkn.length > 0){
-//             return { qs: true, }
-//         }
-//     }
-// }
-
 async function newUserEntry(username, password){
 
     try{
