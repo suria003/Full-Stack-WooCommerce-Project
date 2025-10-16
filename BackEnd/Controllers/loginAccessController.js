@@ -17,6 +17,8 @@ async function loginAccessController(req, res) {
 
     try {
 
+        let userTkn = null;
+
         // CHECK USENAME FROM DB
         const user = await checkUsername(username);
         if (user.qs === false){
@@ -25,6 +27,8 @@ async function loginAccessController(req, res) {
                 message: user.qo,
             })
         };
+
+        userTkn = user.qo;
 
         // CHECK USENAME && PASSWORD FROM DB
         const pass = await checkUserPass(username, password);
@@ -40,7 +44,7 @@ async function loginAccessController(req, res) {
         let tkn = null;
 
         try{
-            tkn = sessionToken(username);
+            tkn = sessionToken(userTkn);
         } catch(error) {
             console.error('Error get session token:', error.message);
             return tkn;
@@ -50,7 +54,7 @@ async function loginAccessController(req, res) {
         let result;
 
         try{
-            result = entrySession(tkn, username);
+            result = entrySession(tkn, userTkn);
 
             if (result.chkStatus === false){
                 return res.status(401).json({
@@ -62,7 +66,7 @@ async function loginAccessController(req, res) {
         } catch(error){
             return res.status(500).json({
                 status: 500,
-                message: `Session Login failed. ${username}`
+                message: `Session Login failed.`
             });
         }
 

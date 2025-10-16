@@ -1,16 +1,14 @@
 // SESSION STORAGE
 const sessionStorage = [];
 
-console.log("session init", sessionStorage);
-
-async function entrySession(tkn, username) {
+async function entrySession(tkn, userTkn) {
     try {
 
-        if (!tkn || !username) {
+        if (!tkn || !userTkn) {
             throw new Error("Token or username missing");
         }
 
-        sessionStorage.push({ token: tkn, username });
+        sessionStorage.push({ token: tkn, userTkn });
 
         return {
             chkStatus: true,
@@ -29,14 +27,13 @@ async function chkSession(tkn) {
     try {
         if (!tkn) throw new Error("Token missing");
 
-        const exists = sessionStorage.some(session => session.token === tkn);
+        const found = sessionStorage.find(sess => sess.token === tkn);
 
-        return { chkStatus: exists }; // TRUE OR FALSE STATE
+        if (!found) return { chkStatus: false };
+
+        return { chkStatus: true, userTkn: found.userTkn };
     } catch (error) {
-        return {
-            chkStatus: false,
-            message: error.message
-        };
+        return { chkStatus: false, message: error.message };
     }
 };
 
@@ -68,6 +65,41 @@ async function removeSession(tkn) {
     }
 }
 
+async function sessionChk(req, res) {
+
+    const authToken = req.headers['authorization'];
+
+    if (!authToken) {
+        return res.status(400).json({
+            status: 400,
+            message: "User not found, login again."
+        });
+    }
+
+    try {
+
+        const resultTkn = await chkSession(authToken);
+
+        if (resultTkn.chkStatus === false) {
+            return res.status(404).json({
+                status: 404,
+                message: "User not Found."
+            });
+        }
+
+        return res.status(200).json({
+            status: 200,
+            message: resultTkn.userTkn
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            status: 500,
+            message: error.message
+        });
+    }
+};
+
 async function sessionLogout(req, res) {
 
     const { authToken } = req.body;
@@ -80,7 +112,6 @@ async function sessionLogout(req, res) {
     }
 
     try {
-
         // CHECK SESSION
         const chkTkn = await chkSession(authToken);
 
@@ -114,4 +145,4 @@ async function sessionLogout(req, res) {
     }
 }
 
-module.exports = { entrySession, sessionLogout, chkSession, removeSession };
+module.exports = { entrySession, sessionLogout, chkSession, sessionChk, removeSession };

@@ -7,6 +7,7 @@ import PrivateRouter from "./Modules/Authendications/SessionRouter/PrivateRouter
 export default function App() {
   return (
     <BrowserRouter>
+
       <Routes>
 
         {ACCOUNT_ROUTERS_JSON.map((authenItem, authenIndex) => (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="*" element={<Navigate to="/login" replace />} />
 
       </Routes>
+      
     </BrowserRouter>
   );
 }

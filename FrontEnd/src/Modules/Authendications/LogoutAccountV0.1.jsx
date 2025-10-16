@@ -57,7 +57,7 @@ export default function LogoutAccount({ quickmsg }) {
 
     return (
         <>
-            <button onClick={LogoutFunc} className="py-2 px-5 bg-red-600 rounded-lg text-white cursor-pointer">
+            <button onClick={LogoutFunc} className="fixed right-2 bottom-2 py-2 px-5 bg-red-600 rounded-lg text-white cursor-pointer">
                 Logout
             </button>
         </>

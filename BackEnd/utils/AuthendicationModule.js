@@ -3,11 +3,11 @@ const connections = require("../config/db");
 async function checkUsername(username){
 
     try{
-        const [rows] = await connections.execute('SELECT username FROM users WHERE username = ?', [username]);
+        const [rows] = await connections.execute('SELECT tkn FROM users WHERE username = ?', [username]);
 
         //TRUE OR FALSE
         if (rows.length > 0){
-            return { qs: true, qo: rows[0].username };
+            return { qs: true, qo: rows[0].tkn };
         } else {
             return { qs: false, qo: "User not found." };
         };
@@ -33,6 +33,15 @@ async function checkUserPass(username, password) {
         return { qs: false, qo: err.message };
     }
 };
+
+// async function finduserTkn(username){
+//     try{
+//         const [tkn] = await connections.execute('SELECT tkn FROM users WHERE username = ?', [username]);
+//         if (tkn.length > 0){
+//             return { qs: true, }
+//         }
+//     }
+// }
 
 async function newUserEntry(username, password){
 
