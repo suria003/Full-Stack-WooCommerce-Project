@@ -70,7 +70,7 @@ The application supports user authentication with the following endpoints:
 > **Note:** Before initializing a GitHub repository, make sure to clone the project using:  
 ```bash
 git clone https://github.com/suria003/Full-Stack-WooCommerce-Project
-
+```
 
 ## Frontend
 
