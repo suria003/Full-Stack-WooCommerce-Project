@@ -10,7 +10,7 @@ export default function Products() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch("http://localhost:3000/products");
+                const response = await fetch("https://woo-commerce-backend.vercel.app/api/v0.1/products");
 
                 if (!response.ok) {
                     setError('No product.')

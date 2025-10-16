@@ -22,7 +22,7 @@ export default function Editor({ hide }) {
             setError(null);
             setResult(null);
 
-            const response = await fetch("http://localhost:3000/segments/evaluate", {
+            const response = await fetch("https://woo-commerce-backend.vercel.app/api/v0.1/segments/evaluate/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ rules, tkn }),

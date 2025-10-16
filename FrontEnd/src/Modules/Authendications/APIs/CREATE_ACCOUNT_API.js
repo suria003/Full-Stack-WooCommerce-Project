@@ -2,7 +2,7 @@ export const CREATE_ACCOUNT_API = async (account_datas) => {
     let output = {};
 
     try {
-        const TARGET_API = "http://localhost:3000/api/v0.1/authendication/register";
+        const TARGET_API = "https://woo-commerce-backend.vercel.app/api/v0.1/authendication/register/";
         const response = await fetch(TARGET_API, {
             method: "POST",
             headers: {

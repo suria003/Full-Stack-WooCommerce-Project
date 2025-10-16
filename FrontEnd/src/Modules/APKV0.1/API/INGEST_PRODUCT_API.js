@@ -10,7 +10,7 @@ export async function INGEST_PRODUCT_API() {
 
     try {
 
-        const TARGET_API = "http://localhost:3000/ingests/product";
+        const TARGET_API = "https://woo-commerce-backend.vercel.app/api/v0.1/ingests/product/";
 
         const response = await fetch(TARGET_API,{
             method: 'GET',

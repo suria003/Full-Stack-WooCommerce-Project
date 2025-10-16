@@ -14,7 +14,7 @@ export default function LogoutAccount({ quickmsg }) {
                 return;
             }
 
-            const TARGET_API = "http://localhost:3000/session/logout";
+            const TARGET_API = "https://woo-commerce-backend.vercel.app/api/v0.1/session/logout/";
 
             const response = await fetch(TARGET_API, {
                 method: "POST",

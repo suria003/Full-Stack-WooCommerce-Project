@@ -4,7 +4,7 @@ export async function CHK_PROFILE_API() {
     if (!tkn) return { loggedIn: false };
 
     try {
-        const TARGET_URL = "http://localhost:3000/session/chk";
+        const TARGET_URL = "https://woo-commerce-backend.vercel.app/api/v0.1/session/chk/";
         const response = await fetch(TARGET_URL, {
             method: 'GET',
             "headers": {
